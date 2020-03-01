@@ -1,13 +1,12 @@
 const { localStorage } = window;
 
-
 export default {
   get: key => {
     if (!localStorage) {
       return null;
     }
 
-const data = localStorage.getItem(key);
+    const data = localStorage.getItem(key);
 
     return JSON.parse(data);
   },

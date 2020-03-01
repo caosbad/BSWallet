@@ -1,6 +1,6 @@
 import extend from 'dva-model-extend';
 import {} from '../services/sso';
-// import storage from '@utils/storage';
+import storage from '@utils/storage';
 // import { getUrlParams } from '@utils/helper';
 import base from './commons/base';
 import { UserSession, AppConfig } from 'blockstack';
@@ -11,13 +11,14 @@ const userSession = new UserSession({ appConfig: appConfig });
 export default extend(base, {
   namespace: 'session',
   state: {
-    userData: undefined // 登录状态null为未登录
+    userData: undefined, // 登录状态null为未登录
+    mixinUserData: undefined
   },
   effects: {
     *checkUserSession(action, { call, select, put }) {
       const isSignedIn = userSession.isUserSignedIn();
       if (isSignedIn) {
-        const userData = userSession.loadUserData();
+        const userData = yield userSession.loadUserData();
         console.log(userData);
         yield put({ type: 'update', payload: { userData } });
         yield put(routerRedux.push('/wallet'));
@@ -71,19 +72,24 @@ export default extend(base, {
     }
   },
   subscriptions: {
-    initApp({ dispatch }) {
-      dispatch({
-        type: 'checkUserSession'
-      });
-    },
-    checkVersion({ history, dispatch }) {
-      if (process.env.NODE_ENV !== 'development') {
-        history.listen(() => {
-          dispatch({
-            type: 'checkVersion'
-          });
-        });
-      }
-    }
+    // initApp({ dispatch }) {
+    //   dispatch({
+    //     type: 'checkUserSession'
+    //   });
+    // },
+    // checkVersion({ history, dispatch }) {
+    //   if (process.env.NODE_ENV !== 'development') {
+    //     history.listen(() => {
+    //       dispatch({
+    //         type: 'checkVersion'
+    //       });
+    //     });
+    //   }
+    // }
+    // initDat({ dispatch }) {
+    //   dispatch({
+    //     type: 'wallet/storeAssets'
+    //   });
+    // }
   }
 });

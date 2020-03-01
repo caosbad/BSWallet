@@ -1,24 +1,28 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import withWidth from '@material-ui/core/withWidth';
 import Box from '@material-ui/core/Box';
-import { useSelector, useDispatch } from 'dva';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => {
   const backgroundColor = theme.palette.background.default;
-  return {};
+  return {
+    rootContainer: {
+      height: '100%',
+      width: '100%',
+      background: 'gray'
+    }
+  };
 });
 
-const Wallet = () => {
+const Test = () => {
   const classes = useStyles();
-
+  console.log(' test page load =================================')
   return (
     <Box className={classes.rootContainer}>
       <Box className={classes.container} mt={8}>
-        123
+        12345678
       </Box>
     </Box>
   );
 };
 
-export default Wallet;
+export default Test;

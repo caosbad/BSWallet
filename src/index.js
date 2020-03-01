@@ -2,7 +2,7 @@ import React from 'react';
 import dva from 'dva';
 import { createBrowserHistory } from 'history';
 import * as serviceWorker from './serviceWorker';
-import './utils/i18n';
+import '@utils/i18n';
 import sessopModel from './models/session';
 import walletModel from './models/wallet';
 import router from './router';

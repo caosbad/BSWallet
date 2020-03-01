@@ -4,11 +4,8 @@ import React from 'react';
 import { Box, CssBaseline } from '@material-ui/core';
 import ThemeTypeProvider from './providers/themeTypeProvider';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'dva/router';
-import Index from './routes';
-import SignIn from './routes/pages/signIn';
-import Wallet from './routes/pages/wallet';
-
-
+import { Assets, Asset, Wallet, SignIn, Test } from './routes';
+import TitleBar from '@components/TitleBar';
 // configure({
 //   apiServer: 'http://localhost:1260',
 //   userSession
@@ -19,16 +16,19 @@ function App() {
     <ThemeTypeProvider>
       <Box>
         <CssBaseline />
+        <TitleBar></TitleBar>
         <Router>
           <Switch>
-            <Route path='/signIn' component={SignIn} />
+            {/* <Route path='/signIn' component={SignIn} />
             <Route path='/wallet' component={Wallet} />
-            <Route path='/' component={Index} />
+            <Route path='/assets' component={Assets} />
+            <Route path='/test' component={Test} /> */}
+            {/* <Route path='/asset/:id' component={Asset} /> */}
             <Redirect to={`/`} />
           </Switch>
         </Router>
       </Box>
-  </ThemeTypeProvider>
+    </ThemeTypeProvider>
   );
 }
 

@@ -10,7 +10,7 @@ module.exports = function(app) {
     res.set({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
-      'Access-Control-Allow-Methods': 'GET'
+      'Access-Control-Allow-Methods': '*'
     });
     next();
   })
