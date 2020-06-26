@@ -23,7 +23,7 @@
     "i18next-xhr-backend": "^3.2.2",
     "int64-buffer": "^0.99.1007",
     "jquery": "^3.4.1",
-    "jsrsasign": "^8.0.12",
+    "jsrsasign": "^8.0.19",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.21",
